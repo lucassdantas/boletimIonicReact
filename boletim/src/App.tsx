@@ -2,9 +2,10 @@ import { IonApp, IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonR
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import Menu from './components/Menu';
-import { Students } from './pages/Students';
-import {Home} from './pages/Home'
 import Page from './pages/Page';
+import {Home} from './pages/Home'
+import { Students } from './pages/Students';
+import { Configurations } from './pages/Configurations';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -32,39 +33,27 @@ setupIonicReact();
 const App: React.FC = () => {
   return (
     <IonApp>
-      <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonButtons slot="start">
-              <IonMenuButton />
-            </IonButtons>
-            <IonTitle>{name}</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+      <IonReactRouter>
+        <IonSplitPane contentId="main">
+          <Menu />
 
-        <IonContent fullscreen>
-          <IonHeader collapse="condense">
-            <IonToolbar>
-              <IonTitle size="large">{name}</IonTitle>
-            </IonToolbar>
-          </IonHeader>
-          <IonReactRouter>
-            <IonSplitPane contentId="main">
-              <Menu />
-              <IonRouterOutlet id="main">
-                <Route path="/" exact={true}>
-                  <Home/>
-                </Route>
-                <Route path="/alunos" exact={true}>
-                  <Students />
-                </Route>
-            
-              </IonRouterOutlet>
-            </IonSplitPane>
-          </IonReactRouter>
-        </IonContent>
-      </IonPage>
-      
+          <IonRouterOutlet id="main">
+
+            <Route path="/" exact={true}>
+              <Page title={'Home'} pageToRender={<Home/>}/>
+            </Route>
+
+            <Route path="/alunos" exact={true}>
+              <Page title={'Alunos'} pageToRender={<Students/>}/>
+            </Route>
+
+            <Route path="/configuracoes" exact={true}>
+              <Page title={'Configurações'} pageToRender={<Configurations/>}/>
+            </Route>
+        
+          </IonRouterOutlet>
+        </IonSplitPane>
+      </IonReactRouter>
     </IonApp>
   );
 };

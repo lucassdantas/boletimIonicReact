@@ -3,9 +3,8 @@ import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
 import './Page.css';
 
-const Page: React.FC = () => {
+const Page = ({title, pageToRender}:{title:string, pageToRender:any}) => {
 
-  const { name } = useParams<{ name: string; }>();
 
   return (
     <IonPage>
@@ -14,17 +13,18 @@ const Page: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>{name}</IonTitle>
+          <IonTitle>{title}</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">{name}</IonTitle>
+            <IonTitle size="large">{title}</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name={name} />
+        {pageToRender}
+        <ExploreContainer name={title} />
       </IonContent>
     </IonPage>
   );

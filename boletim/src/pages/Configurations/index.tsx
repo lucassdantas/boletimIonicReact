@@ -1,9 +1,9 @@
 import { IonTitle } from "@ionic/react"
 
-export const Students = () => {
+export const Configurations = () => {
     return (
         <>
-            <IonTitle>Estudante</IonTitle>
+            <IonTitle>Configurações</IonTitle>
             <IonTitle>oi</IonTitle>
             <IonTitle>oi</IonTitle>
             <IonTitle>oi</IonTitle>
