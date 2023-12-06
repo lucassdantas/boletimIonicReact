@@ -13,7 +13,7 @@ interface Page  {
 const Page = ({title, pageToRender, loggedIn = false}: Page) => {
   const [isLoggedIn, setIsLoggedIn] = useState(loggedIn)
   console.log(isLoggedIn)
-  if(isLoggedIn){
+  //if(isLoggedIn){
     return (
       <IonPage>
         <IonHeader>
@@ -36,7 +36,7 @@ const Page = ({title, pageToRender, loggedIn = false}: Page) => {
         </IonContent>
       </IonPage>
     );
-  }
+  //}
 
   return (
     <IonPage>
